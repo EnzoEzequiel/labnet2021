@@ -11,74 +11,54 @@ namespace tp1_POO_vehiculos
         static void Main(string[] args)
         {
             string tipoVehiculo = "nada";
-
+            int ingresos = 0;
             Taxi taxisito;
             Omnibus ominisito;
 
+            List<TransportePublico> listaVehiculos = new List<TransportePublico>();
+
             do
             {
-                try
+            
+                Console.WriteLine("Favor de Ingresar el tipo de vehiculo (taxi u omnibus) o 'listo' para finalizar: ");
+                tipoVehiculo = Console.ReadLine();
+
+                if (tipoVehiculo.ToLower() == "taxi")
                 {
-                    Console.WriteLine("Favor de Ingresar el tipo de vehiculo (taxi u omnibus) o 'listo' para finalizar: ");
-                    tipoVehiculo = Console.ReadLine();
+                    ingresos++;
+                    Console.WriteLine("Ahora favor de ingresar la cantidad de pasajeros: ");
+                    taxisito = new Taxi(int.Parse(Console.ReadLine()));
+                    listaVehiculos.Add(taxisito);
 
-                    if (tipoVehiculo.ToLower() == "taxi")
+                }
+                else
+                {
+                    if (tipoVehiculo.ToLower() == "omnibus")
                     {
+                        ingresos++;
                         Console.WriteLine("Ahora favor de ingresar la cantidad de pasajeros: ");
-                        taxisito = new Taxi(int.Parse(Console.ReadLine()));
-
+                        ominisito = new Omnibus(int.Parse(Console.ReadLine()));
+                        listaVehiculos.Add(ominisito);
                     }
                     else
                     {
-                        if (tipoVehiculo.ToLower() == "omnibus")
-                        {
-                            Console.WriteLine("Ahora favor de ingresar la cantidad de pasajeros: ");
-                            ominisito = new ominisito(int.Parse(Console.ReadLine()));
-                        }
-                        else
-                        {
-                        }
+                        Console.WriteLine("Ingreso erroneo, favor de reintentar ingresar el tipo de vehiculo (taxi u omnibus) o 'listo' para finalizar:");
+                        tipoVehiculo = Console.ReadLine();
                     }
-
-                    /*
-                    switch (tipoVehiculo)
-                    {
-                        case "taxi":
-                            Console.WriteLine("Ahora favor de ingresar la cantidad de pasajeros: ");
-                            pasajerosTaxi =int.Parse(Console.ReadLine());
-                          
-                            
-                            Console.ReadKey();
-                            Console.Clear();
-                           
-                            break;
-
-                        case "omnibus":
-                            Console.WriteLine("Ahora favor de ingresar la cantidad de pasajeros: ");
-                            pasajerosOmnibus = int.Parse(Console.ReadLine());
-                            Console.ReadKey();
-                            Console.Clear();
-                           
-                            break;
-                        default:
-                            Console.WriteLine("Ingrese tipo de vehiculo (taxi u omnibus). ");
-                            Console.ReadKey();
-                            Console.Clear();
-                         
-                            break;
-                    }*/
                 }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Dato erroneo, intentelo nuevamente.");
-                    Console.WriteLine("Presione cualquier tecla para regresar al menu");
-                    Console.ReadKey();
-                    Console.Clear();
+ 
+                
+            } while (tipoVehiculo != "listo" && ingresos<10);
 
-                }
-            } while (tipoVehiculo != "listo");
+            Console.WriteLine("los vehiculos son: ");
+            for (int i = 0; i < listaVehiculos.Count; i++)
+            {
+                Console.WriteLine("{0} {1}= {2}", listaVehiculos[i].ToString(), i + 1, listaVehiculos[i].Pasajeros);
+            }
 
-            Console.WriteLine("Ejecucion finalizada.");
+            Console.WriteLine("Ejecucion finalizada con "+ingresos+" ingresos");
+
+            
             Console.ReadKey();
 
         }
@@ -86,4 +66,4 @@ namespace tp1_POO_vehiculos
 
     }
 }
-}
+
