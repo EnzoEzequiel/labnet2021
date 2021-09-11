@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGU", "Tp2_excep\IGU.csproj", "{2E25035B-4DBD-46BF-9223-42233CD93799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{A5D87264-5A32-4281-8C96-B575C2F28B96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaTests", "LogicaTests\LogicaTests.csproj", "{73F86591-DF36-44BA-B4A2-7D54B18242E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E25035B-4DBD-46BF-9223-42233CD93799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E25035B-4DBD-46BF-9223-42233CD93799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E25035B-4DBD-46BF-9223-42233CD93799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E25035B-4DBD-46BF-9223-42233CD93799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D87264-5A32-4281-8C96-B575C2F28B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D87264-5A32-4281-8C96-B575C2F28B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D87264-5A32-4281-8C96-B575C2F28B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D87264-5A32-4281-8C96-B575C2F28B96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F86591-DF36-44BA-B4A2-7D54B18242E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F86591-DF36-44BA-B4A2-7D54B18242E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F86591-DF36-44BA-B4A2-7D54B18242E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F86591-DF36-44BA-B4A2-7D54B18242E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFD6277C-47C0-414A-B76D-7CA4818258CD}
+	EndGlobalSection
+EndGlobal
