@@ -11,8 +11,15 @@ namespace Logic.EF
     {
         public void Add(Territories territorie)
         {
-            context.Territories.Add(territorie);
-            context.SaveChanges();
+            try
+            {
+                context.Territories.Add(territorie);
+                context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new DataException();
+            }
         }
 
         public void Delete(int id)
