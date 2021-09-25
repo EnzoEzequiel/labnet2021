@@ -10,7 +10,6 @@ function validarFormulario()
     if (nombreId == "" || apellidoId == "" || edadId == "" || empresaId == "")
     {
         alert("favor de ingresar correctamente los datos");
-        return false;
     }
     else
     {
