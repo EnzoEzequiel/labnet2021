@@ -1,0 +1,33 @@
+﻿@model List<MVC.Models.SupplierView>
+
+@{
+    ViewBag.Title = "Supplier Page";
+}
+<h1>Campos de proveedor</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+   @foreach (var supplier in Model)
+    {
+        <tr>
+            <td scope="row">@supplier.Id</td>
+            <td>@supplier.NombreSupplier</td>
+            <td>@Html.ActionLink("Borrar","Delete",new { id=supplier.Id}, new { onclick="return confirm('Esta seguro de querer eliminar?')"})</td>
+
+        </tr>
+    }
+    </tbody>
+
+</table>
+
+<div>
+    @Html.ActionLink("Insertar nuevo supplier","Insert","supplier")
+</div>

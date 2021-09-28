@@ -1,0 +1,14 @@
+﻿@model MVC.Models.SupplierView
+
+@{
+    ViewBag.Title = "Supplier Page";
+}
+
+<h1>Vista para insertar</h1>
+
+@using (Html.BeginForm("Insert", "Supplier", FormMethod.Post))
+{
+    
+    <label>Nombre Proveedor: </label>@Html.TextBoxFor(s => s.NombreSupplier)
+    <input type="submit" class="btn btn-success" value="guardar" />
+}
