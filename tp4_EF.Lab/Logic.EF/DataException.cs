@@ -8,7 +8,8 @@ namespace Logic.EF
 {
     public class DataException : Exception
     {
-        public override string Message => "El dato ingresado supero el limite de caracteres";
+        public override string Message => "El dato ingresado no esta permitido";
+       
 
     }
 }

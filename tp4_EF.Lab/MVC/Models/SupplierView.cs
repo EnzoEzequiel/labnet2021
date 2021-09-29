@@ -10,5 +10,7 @@ namespace MVC.Models
         public int Id { set; get; }
 
         public string NombreSupplier { set; get; }
+
+        public string CompaniaSupplier { set; get; }
     }
 }

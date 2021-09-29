@@ -3,31 +3,73 @@
 @{
     ViewBag.Title = "Supplier Page";
 }
-<h1>Campos de proveedor</h1>
+<html>
+<head>
+    <script>
+        function Delete(id)
+        {
+            var aEliminar = confirm('Desea eliminar?');
+            if (aEliminar)
+            {
+                $.ajax
+                (
+                {
+                    type: "GET",
+                    url: "/Supplier/Delete/" + id,
+                    success: function (data) {
+                        $("#supplier_" + id).remove();
+                    },
+                    error: function () {
+                        alert("ha ocurrido un error!!")
+                    }
+                });
+            }
+        }
+        function selectTop()
+        {
+            var quantity = document.getElementById("topID").value;
+            document.location = "/?value=" + quantity;
+        }
+    </script>
+</head>
+<body>
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+    <h2>Campos de proveedor</h2>
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="topID">
+            <a href="#" onclick="selectTop()" class="btn btn-primary">Select Top</a>
+            @Html.ActionLink("Actualizar", "Index", "", new { @class = "btn btn-primary" })
+        </form>
+    </nav>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Actualizar registro</th>
+                <th scope="col">Eliminar registro</th>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var supplier in Model)
+            {
+            <tr id="supplier_@supplier.Id">
+                <td scope="row">@supplier.Id</td>
+                <td>@supplier.NombreSupplier</td>
+                <td><p onclick=Delete(@supplier.Id) class="btn btn-danger">Borrar</p></td>
+                <td>@Html.ActionLink("Actualizar", "InsertUpdate", new { id = supplier.Id, @class = "SupplierView" }, new { @class = "btn btn-info" })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        
+        @Html.ActionLink("Insertar nuevo supplier", "InsertUpdate", "", new { @class = "btn btn-success" })
+    </div>
+</body>
+</html>
 
-        </tr>
-    </thead>
-    <tbody>
-   @foreach (var supplier in Model)
-    {
-        <tr>
-            <td scope="row">@supplier.Id</td>
-            <td>@supplier.NombreSupplier</td>
-            <td>@Html.ActionLink("Borrar","Delete",new { id=supplier.Id}, new { onclick="return confirm('Esta seguro de querer eliminar?')"})</td>
 
-        </tr>
-    }
-    </tbody>
-
-</table>
-
-<div>
-    @Html.ActionLink("Insertar nuevo supplier","Insert","supplier")
-</div>

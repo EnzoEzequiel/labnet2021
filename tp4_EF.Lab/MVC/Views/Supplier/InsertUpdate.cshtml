@@ -6,9 +6,10 @@
 
 <h1>Vista para insertar</h1>
 
-@using (Html.BeginForm("Insert", "Supplier", FormMethod.Post))
+@using (Html.BeginForm("InsertUpdate", "Supplier", FormMethod.Post))
 {
-    
+
     <label>Nombre Proveedor: </label>@Html.TextBoxFor(s => s.NombreSupplier)
+    <label>Nombre Compañia: </label>@Html.TextBoxFor(c => c.CompaniaSupplier)
     <input type="submit" class="btn btn-success" value="guardar" />
 }

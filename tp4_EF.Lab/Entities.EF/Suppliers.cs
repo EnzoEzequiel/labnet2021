@@ -9,6 +9,7 @@ namespace Entities.EF
     public partial class Suppliers
     {
         [Key]
+        
         public int SupplierID { get; set; }
 
         [Required]

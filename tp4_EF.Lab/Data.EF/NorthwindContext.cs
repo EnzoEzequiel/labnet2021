@@ -21,6 +21,8 @@ namespace Data.EF
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)
                 .IsFixedLength();
+
+            
         }
     }
 }

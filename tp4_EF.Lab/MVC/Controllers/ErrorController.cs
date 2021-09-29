@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,13 @@ namespace MVC.Controllers
     public class ErrorController : Controller
     {
         // GET: Error
-        public ActionResult Index()
+        public ActionResult Index(string mssg)
         {
-            return View();
+            ExceptionsView ex = new ExceptionsView
+            {
+                Message = mssg
+            };
+            return View(ex);
         }
     }
 }

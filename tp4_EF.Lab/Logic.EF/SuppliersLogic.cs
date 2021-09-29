@@ -60,8 +60,7 @@ namespace Logic.EF
                 try
                 {
                     supplierActualizado.CompanyName = supplier.CompanyName;
-                    supplierActualizado.Country = supplier.Country;
-                    supplierActualizado.SupplierID = supplier.SupplierID;
+                    supplierActualizado.ContactName = supplier.ContactName;
                     context.SaveChanges();
                 }
                 catch (Exception)
@@ -71,7 +70,7 @@ namespace Logic.EF
             }
         }
 
-        public Suppliers Encontrar(int id)
+        public Suppliers Encontrar(int? id)
         {
             var supplier = context.Suppliers.Find(id);
             if (supplier == null)

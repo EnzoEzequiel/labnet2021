@@ -26,42 +26,61 @@ namespace MVC.Controllers
             }).ToList();
             return View(supplierView);
         }
-
-        public ActionResult Insert()
+        
+        public ActionResult InsertUpdate(int? id)
         {
-
-
-            return View();
+            SupplierView supplier = new SupplierView();
+            if (id != null)
+            {
+                var sup = logic.Encontrar(id);
+                supplier.CompaniaSupplier = sup.CompanyName;
+                supplier.NombreSupplier = sup.ContactName;
+            }
+            return View(supplier);
         }
-
+        
         [HttpPost]
-        public ActionResult Insert(SupplierView supplierView)
+        public ActionResult InsertUpdate(SupplierView supplierView)
         {
             try
             {
                 Suppliers supplierEntity = new Suppliers
                 {
-                    
-                    ContactName = supplierView.NombreSupplier
+                    SupplierID=supplierView.Id,
+                    CompanyName= supplierView.CompaniaSupplier,
+                    ContactName =supplierView.NombreSupplier
                     
                 };
-
-                logic.Add(supplierEntity);
-
-                return RedirectToAction("Index");
+                if (supplierView.Id == 0)
+                {
+                    logic.Add(supplierEntity);
+                    return RedirectToAction("index");
+                }
+                else
+                {
+                    logic.Update(supplierEntity);
+                    return RedirectToAction("index");
+                }
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Index", "Error");
+                return RedirectToAction("index", "Error", new { mssg = ex.Message });
             }
-
         }
 
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public bool Delete(int id)
         {
-            logic.Delete(id);
-
-            return RedirectToAction("Index");
+            try
+            {
+                logic.Delete(id);
+                return true;
+            }
+            catch
+            {
+                Response.StatusCode = 422;
+                return false;
+            }
         }
 
     }
