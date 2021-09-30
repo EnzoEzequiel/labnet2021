@@ -22,6 +22,7 @@ namespace MVC.Controllers
             {
                 Id = s.SupplierID,
                 NombreSupplier = s.ContactName,
+                CompaniaSupplier=s.CompanyName
 
             }).ToList();
             return View(supplierView);

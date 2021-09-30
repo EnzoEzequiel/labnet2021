@@ -1,7 +1,7 @@
 ﻿@model List<MVC.Models.SupplierView>
 
 @{
-    ViewBag.Title = "Supplier Page";
+    ViewBag.Title = "Proveedores";
 }
 <html>
 <head>
@@ -25,46 +25,41 @@
                 });
             }
         }
-        function selectTop()
-        {
-            var quantity = document.getElementById("topID").value;
-            document.location = "/?value=" + quantity;
-        }
+        
     </script>
 </head>
 <body>
     <h2>@ViewBag.Title.</h2>
     <h3>@ViewBag.Message</h3>
     <h2>Campos de proveedor</h2>
-    <nav class="navbar navbar-light bg-light">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="topID">
-            <a href="#" onclick="selectTop()" class="btn btn-primary">Select Top</a>
-            @Html.ActionLink("Actualizar", "Index", "", new { @class = "btn btn-primary" })
-        </form>
-    </nav>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Actualizar registro</th>
-                <th scope="col">Eliminar registro</th>
+    <div id="datos-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre de proveedor</th>
+                    <th scope="col">Nombre de compañia</th>
+                    <th scope="col">Eliminar registro</th>
+                    <th scope="col">Actualizar registro</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var supplier in Model)
-            {
-            <tr id="supplier_@supplier.Id">
-                <td scope="row">@supplier.Id</td>
-                <td>@supplier.NombreSupplier</td>
-                <td><p onclick=Delete(@supplier.Id) class="btn btn-danger">Borrar</p></td>
-                <td>@Html.ActionLink("Actualizar", "InsertUpdate", new { id = supplier.Id, @class = "SupplierView" }, new { @class = "btn btn-info" })</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var supplier in Model)
+                {
+                    <tr id="supplier_@supplier.Id">
+                        <td scope="row">@supplier.Id</td>
+                        <td>@supplier.NombreSupplier</td>
+                        <td scope="row">@supplier.CompaniaSupplier</td>
+                        <td><p onclick=Delete(@supplier.Id) class="btn btn-danger">Borrar</p></td>
+                        <td>@Html.ActionLink("Actualizar", "InsertUpdate", new { id = supplier.Id, @class = "SupplierView" }, new { @class = "btn btn-info" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+
     <div>
         
         @Html.ActionLink("Insertar nuevo supplier", "InsertUpdate", "", new { @class = "btn btn-success" })

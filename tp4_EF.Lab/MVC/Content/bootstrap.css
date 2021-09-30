@@ -189,13 +189,16 @@ table {
 }
 td,
 th {
+    border: solid 1px black;
   padding: 0;
 }
+thead {
+    background-color: #3c763d;
+}
+
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
-  *,
-  *:before,
-  *:after {
+    *, *:before, *:after {
     color: #000 !important;
     text-shadow: none !important;
     background: transparent !important;
@@ -222,6 +225,8 @@ th {
     page-break-inside: avoid;
   }
   thead {
+      
+
     display: table-header-group;
   }
   tr,
