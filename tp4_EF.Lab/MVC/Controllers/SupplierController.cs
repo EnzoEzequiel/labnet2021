@@ -30,6 +30,7 @@ namespace MVC.Controllers
         
         public ActionResult InsertUpdate(int? id)
         {
+
             SupplierView supplier = new SupplierView();
             if (id != null)
             {
@@ -45,28 +46,36 @@ namespace MVC.Controllers
         {
             try
             {
-                Suppliers supplierEntity = new Suppliers
+                if (!ModelState.IsValid)
                 {
-                    SupplierID=supplierView.Id,
-                    CompanyName= supplierView.CompaniaSupplier,
-                    ContactName =supplierView.NombreSupplier
-                    
-                };
-                if (supplierView.Id == 0)
-                {
-                    logic.Add(supplierEntity);
-                    return RedirectToAction("index");
+                    return RedirectToAction("index", "Error");
                 }
                 else
                 {
-                    logic.Update(supplierEntity);
-                    return RedirectToAction("index");
+                    Suppliers supplierEntity = new Suppliers
+                    {
+                        SupplierID = supplierView.Id,
+                        CompanyName = supplierView.CompaniaSupplier,
+                        ContactName = supplierView.NombreSupplier
+
+                    };
+                    if (supplierView.Id == 0)
+                    {
+                        logic.Add(supplierEntity);
+                        return RedirectToAction("index");
+                    }
+                    else
+                    {
+                        logic.Update(supplierEntity);
+                        return RedirectToAction("index");
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                return RedirectToAction("index", "Error", new { mssg = ex.Message });
-            }
+               
+           }
+           catch (Exception ex)
+           {
+               return RedirectToAction("index", "Error", new { mssg = ex.Message });
+           }
         }
 
         [HttpGet]
