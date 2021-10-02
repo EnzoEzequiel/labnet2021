@@ -44,7 +44,16 @@ namespace Logic.EF
 
         public List<Suppliers> GetAll()
         {
-            return context.Suppliers.ToList();
+
+            try
+            {
+                return context.Suppliers.ToList();
+            }
+            catch (Exception)
+            {
+                throw new Exception("No se pudieron retornar registros");
+            }
+            
         }
 
 
@@ -79,6 +88,20 @@ namespace Logic.EF
             }
             return supplier;
             
+        }
+
+        public List<Suppliers> SelecTop(int value)
+        {
+            try
+            {
+                var suppliers = (from supplier in context.Suppliers
+                                select supplier).Take(value);
+                return suppliers.ToList();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al seleccionar los datos");
+            }
         }
 
     }

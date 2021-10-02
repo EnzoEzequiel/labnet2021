@@ -1,0 +1,26 @@
+﻿@model List<MVC.Models.CountriesView>
+@{
+    ViewBag.Title = "Countries";
+}
+<h2>
+    Lista de paises con su informacion
+</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Pais</th>
+            <th scope="col">Capital</th>
+            <th scope="col">Region</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var country in Model)
+        {
+        <tr>
+            <th scope="row">@country.Name</th>
+            <td>@country.Capital</td>
+            <td>@country.Region</td>
+        </tr>
+        }
+    </tbody>
+</table>

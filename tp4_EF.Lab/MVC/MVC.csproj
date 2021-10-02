@@ -126,12 +126,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CountriesView.cs" />
     <Compile Include="Models\ExceptionsView.cs" />
     <Compile Include="Models\SupplierView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -174,6 +176,7 @@
     <Content Include="Views\Supplier\Index.cshtml" />
     <Content Include="Views\Supplier\InsertUpdate.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
