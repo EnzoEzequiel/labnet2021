@@ -27,19 +27,17 @@ namespace Logic.EF
 
         public void Delete(int id)
         {
-            
-            var supplier = context.Suppliers.Find(id);
-            if (supplier == null)
+            try
+            {
+                var supplier = context.Suppliers.Find(id);
+                context.Suppliers.Remove(supplier);
+                context.SaveChanges();
+
+            }
+            catch (Exception)
             {
                 throw new ExcepcionPersonalizada();
             }
-            else
-            {
-                context.Suppliers.Remove(supplier);
-                context.SaveChanges();
-            }
-
-            
         }
 
         public List<Suppliers> GetAll()
@@ -72,9 +70,9 @@ namespace Logic.EF
                     supplierActualizado.ContactName = supplier.ContactName;
                     context.SaveChanges();
                 }
-                catch (Exception)
+                catch (DataException ex)
                 {
-                    throw new DataException();
+                    throw ex;
                 }
             }
         }
