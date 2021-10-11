@@ -17,14 +17,15 @@ namespace WebAPI.EF.Controllers
         {
             supplierLogic = new SuppliersLogic();
         }
+
         [HttpGet]
         public HttpResponseMessage Get()
         {
             try
             {
                 List<SupplierApiView> suppliersViews = new List<SupplierApiView>();
-                List<Suppliers> shippers = supplierLogic.GetAll();
-                suppliersViews = shippers.Select(s => new SupplierApiView
+                List<Suppliers> suppliers = supplierLogic.GetAll();
+                suppliersViews = suppliers.Select(s => new SupplierApiView
                 {
                     Id = s.SupplierID,
                     Nombre = s.ContactName,
