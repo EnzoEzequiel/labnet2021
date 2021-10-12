@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group form-container">
+        <label class="col-form-label">Company name: {{supplierChild.CompanyName}}</label>
+        <input formControlName="companyName" type="text" class="form-control" placeholder="Enter name of the company..">
+        <div *ngIf="nameCompanyCtrl?.invalid && nameCompanyCtrl?.touched">
+            <small *ngIf="nameCompanyCtrl?.errors?.required" class="text-danger">El nombre es requerido</small>
+            <small *ngIf="nameCompanyCtrl?.errors?.maxlength" class="text-danger">La longitud máxima es de 40 caracteres (incluye espacios)</small>
+            <small *ngIf="nameCompanyCtrl?.errors?.pattern" class="text-danger">Solo se permiten letras y espacios</small>
+        </div>
+    </div>
+
+    <div class="form-group form-container">
+      <label class="col-form-label">Name: {{supplierChild.ContactName}}</label>
+      <input formControlName="name" type="text" class="form-control" placeholder="Enter name of the supplier..">
+      <div *ngIf="nameCtrl?.invalid && nameCtrl?.touched">
+          <small *ngIf="nameCtrl?.errors?.required" class="text-danger">El nombre es requerido</small>
+          <small *ngIf="nameCtrl?.errors?.maxlength" class="text-danger">La longitud máxima es de 40 caracteres (incluye espacios)</small>
+          <small *ngIf="nameCtrl?.errors?.pattern" class="text-danger">Solo se permiten letras y espacios</small>
+      </div>
+  </div>
+    <hr>
+    <button [disabled]="!form.valid" type="submit" class="btn btn-success" style="margin-right: 15px;">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="onClear()">Limpiar</button>
+</form>
+

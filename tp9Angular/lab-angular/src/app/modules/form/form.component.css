@@ -1,0 +1,19 @@
+.form-control.ng-touched.ng-invalid {
+    border:1px solid red;
+   }
+
+.form-control.ng-touched.ng-valid {
+    border:1px solid green;
+   }
+
+.form-container {
+  display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: 'robotoregular';
+    font-weight: bold;
+    color: #0e0e2c;
+    font-size: 20px;
+    margin-bottom: 20px;
+}

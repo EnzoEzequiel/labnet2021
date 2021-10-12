@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebAPI.EF.App_Start;
 
 namespace WebAPI.EF
 {
@@ -10,7 +11,7 @@ namespace WebAPI.EF
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            config.EnableCors(new AccessPolicyCors());
             // Web API routes
             config.MapHttpAttributeRoutes();
 

@@ -88,6 +88,12 @@ namespace Logic.EF
             
         }
 
+        public Suppliers Encontrado(int id)
+        {
+            var supplier = Encontrar(id);
+            return supplier;
+        }
+
         public List<Suppliers> SelecTop(int value)
         {
             try

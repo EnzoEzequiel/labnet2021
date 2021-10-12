@@ -23,18 +23,10 @@ namespace WebAPI.EF.Controllers
         {
             try
             {
-                List<SupplierApiView> suppliersViews = new List<SupplierApiView>();
-                List<Suppliers> suppliers = supplierLogic.GetAll();
-                suppliersViews = suppliers.Select(s => new SupplierApiView
-                {
-                    Id = s.SupplierID,
-                    Nombre = s.ContactName,
-                    NombreCompania = s.CompanyName
-
-                }).ToList();
-                return Request.CreateResponse(HttpStatusCode.OK, suppliersViews);
+                return Request.CreateResponse(HttpStatusCode.OK, supplierLogic.GetAll());
             }
             catch (Exception ex)
+
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
@@ -45,19 +37,7 @@ namespace WebAPI.EF.Controllers
         {
             try
             {
-                var supplierView = new SupplierApiView();
-                var supplier = supplierLogic.Encontrar(id);
-                if (supplier != null)
-                {
-                    supplierView.Id = supplier.SupplierID;
-                    supplierView.Nombre = supplier.ContactName;
-                    supplierView.NombreCompania = supplier.CompanyName;
-                    return Ok(supplierView);
-                }
-                else
-                {
-                    return NotFound();
-                }
+                return Ok(supplierLogic.Encontrado(id));
             }
             catch (Exception)
             {
@@ -66,14 +46,11 @@ namespace WebAPI.EF.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] SupplierApiView supplierView)
+        public HttpResponseMessage Post([FromBody] Suppliers shippers)
         {
             try
             {
-                var supplier = new Suppliers();
-                supplier.ContactName = supplierView.Nombre;
-                supplier.CompanyName = supplierView.NombreCompania;
-                supplierLogic.Add(supplier);
+                supplierLogic.Add(shippers);
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception ex)
@@ -83,15 +60,11 @@ namespace WebAPI.EF.Controllers
         }
 
         [HttpPut]
-        public HttpResponseMessage Put([FromBody] SupplierApiView supplierView)
+        public HttpResponseMessage Put([FromBody] Suppliers shippers)
         {
             try
             {
-                var supplier = new Suppliers();
-                supplier.SupplierID = supplierView.Id;
-                supplier.ContactName = supplierView.Nombre;
-                supplier.CompanyName = supplierView.NombreCompania;
-                supplierLogic.Update(supplier);
+                supplierLogic.Update(shippers);
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (Exception ex)
@@ -107,10 +80,6 @@ namespace WebAPI.EF.Controllers
             {
                 supplierLogic.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.NoContent);
-            }
-            catch (ExcepcionPersonalizada ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex.Message);
             }
             catch (Exception ex)
             {
